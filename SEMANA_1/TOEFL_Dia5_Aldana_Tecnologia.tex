@@ -1,0 +1,334 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{geometry}
+\geometry{margin=1.8cm}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rfoot{\thepage/\pageref{LastPage}}
+\lhead{\small TOEFL ITP 2026 --- Day 5}
+\rhead{\small MPrometeo}
+\renewcommand{\headrulewidth}{0.4pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+
+\begin{document}
+
+\begin{center}
+{\LARGE \textbf{DAY 5 --- Tuesday Mar 3}}\\[4pt]
+{\large Listening Intensive}\\[2pt]
+{\normalsize Theme: Aldana on AI + Elementary OS vs Linux Distros}\\[2pt]
+\rule{\textwidth}{0.8pt}
+\end{center}
+
+% ============================================================
+\section*{Grammar: Conjunctions \& Connectors}
+% ============================================================
+
+\subsection*{Contrast Connectors}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{Connector} & \textbf{Structure} & \textbf{Example} \\
+\midrule
+although/though & + clause & Although Linux is free, many prefer macOS. \\
+despite/in spite of & + noun/gerund & Despite being free, Linux struggles. \\
+however & sentence. However, sentence. & It's free. However, it lacks apps. \\
+nevertheless & sentence. Nevertheless, ... & It crashed. Nevertheless, I use it. \\
+whereas & + clause (comparison) & macOS is polished, whereas Linux is flexible. \\
+while & + clause & While elementary OS is elegant, it's niche. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{TOEFL Trap:} ``Despite'' NEVER takes a clause directly.
+\begin{itemize}[nosep]
+\item WRONG: ``Despite it is free, nobody uses it.''
+\item RIGHT: ``Despite being free, nobody uses it.''
+\item RIGHT: ``Although it is free, nobody uses it.''
+\end{itemize}
+
+\subsection*{Cause/Effect Connectors}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{Connector} & \textbf{Structure} & \textbf{Example} \\
+\midrule
+because/since/as & + clause & Because AI evolves fast, jobs change. \\
+because of/due to & + noun & Due to rapid AI growth, jobs are changing. \\
+therefore/thus & sentence. Therefore, ... & AI is powerful. Therefore, we must regulate it. \\
+consequently & sentence. Consequently, ... & Data leaked. Consequently, trust dropped. \\
+so...that & so + adj + that + clause & AI is so fast that humans can't compete. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Addition Connectors}
+
+\begin{itemize}[nosep]
+\item \textbf{furthermore / moreover / in addition} = formal ``also''
+\item \textbf{not only...but also} = emphasis (triggers inversion if first)
+\item \textbf{as well as} = does NOT change subject-verb agreement
+\end{itemize}
+
+% ============================================================
+\section*{Reading Passage 1: Aldana on AI ($\sim$220 words)}
+% ============================================================
+
+\begin{tcolorbox}[colback=white, colframe=black,
+    title={Based on Aldana: ``Is AI Frying Our Brains?'' (Oct 3, 2025)}]
+\small
+In his October 2025 column, Maximino Aldana posed a question that
+many scientists have been asking privately: is artificial intelligence
+making us collectively dumber? His argument was not the typical
+technophobic complaint. As a complexity scientist, Aldana approached
+the issue from an information-processing perspective.
+
+The human brain, Aldana noted, evolved to solve problems through
+effort --- through the friction of thinking. When we outsource that
+effort to AI systems that generate instant answers, we are not
+merely saving time; we are atrophying the very cognitive muscles
+that make us capable of critical thought. It is analogous to using
+a wheelchair when your legs work perfectly: convenient in the short
+term, debilitating in the long term.
+
+However, Aldana was careful to distinguish between different uses
+of AI. Using AI as a tool to amplify human capability --- the way a
+telescope amplifies vision --- is fundamentally different from using
+it as a replacement for thinking. The danger lies not in the
+technology itself but in the laziness it enables.
+
+His conclusion was characteristically sharp: ``The question is not
+whether AI is intelligent. The question is whether we will remain
+intelligent enough to use it wisely.'' For a scientist who studies
+complex systems, the irony is that AI --- our most complex creation
+--- may be simplifying us.
+\end{tcolorbox}
+
+\subsection*{Questions}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+\item What is Aldana's main argument?
+\begin{enumerate}[label=(\Alph*)]
+\item AI should be banned completely
+\item AI may weaken our critical thinking if used as a replacement for effort
+\item AI is always beneficial
+\item Scientists should not use AI
+\end{enumerate}
+
+\item The wheelchair analogy illustrates:
+\begin{enumerate}[label=(\Alph*)]
+\item That AI helps disabled people
+\item The danger of convenience replacing necessary effort
+\item That wheelchairs are better than walking
+\item Nothing relevant to AI
+\end{enumerate}
+
+\item ``Atrophying'' is closest in meaning to:
+\begin{enumerate}[label=(\Alph*)]
+\item strengthening \item weakening from disuse
+\item expanding \item replacing
+\end{enumerate}
+
+\item According to Aldana, the real danger of AI is:
+\begin{enumerate}[label=(\Alph*)]
+\item The technology itself
+\item The laziness it enables in humans
+\item Its cost
+\item Its speed
+\end{enumerate}
+
+\item The word ``characteristically'' implies:
+\begin{enumerate}[label=(\Alph*)]
+\item surprisingly \item in a way typical of him
+\item accidentally \item quietly
+\end{enumerate}
+\end{enumerate}
+
+\textbf{Answers:} 1-B, 2-B, 3-B, 4-B, 5-B
+
+% ============================================================
+\section*{Reading Passage 2: Elementary OS ($\sim$200 words)}
+% ============================================================
+
+\begin{tcolorbox}[colback=white, colframe=black]
+\small
+In the crowded landscape of Linux distributions, elementary OS
+occupies a peculiar position. Unlike Ubuntu, which prioritizes
+broad compatibility, or Arch Linux, which appeals to users who enjoy
+configuring every detail, elementary OS is designed around a single
+principle: simplicity through design.
+
+Its interface, called Pantheon, is deliberately reminiscent of
+macOS --- clean, minimal, and opinionated. The developers make
+choices \emph{for} the user rather than offering endless options.
+This philosophy, borrowed from Apple, has earned elementary OS both
+passionate fans and fierce critics. Supporters argue that it
+demonstrates how Linux can be beautiful and accessible to non-technical
+users. Detractors claim it sacrifices the freedom that makes Linux
+valuable in the first place.
+
+The distribution also pioneered a ``pay what you want'' model for
+its downloads and app store, challenging the assumption that open-source
+software must always be completely free. This decision was
+controversial within the Linux community, where free-as-in-freedom
+is often conflated with free-as-in-price.
+
+Despite its small market share, elementary OS has influenced the
+broader Linux ecosystem. Other distributions have adopted similar
+design principles, and the conversation about user experience in
+open-source software has shifted considerably since elementary OS
+first appeared in 2011.
+\end{tcolorbox}
+
+\subsection*{Questions}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+\item Elementary OS primarily differs from other Linux distros in its:
+\begin{enumerate}[label=(\Alph*)]
+\item Programming language \item Focus on design simplicity
+\item Server capabilities \item Gaming performance
+\end{enumerate}
+
+\item ``Opinionated'' in context means:
+\begin{enumerate}[label=(\Alph*)]
+\item Rude \item Making design decisions for the user
+\item Open to customization \item Political
+\end{enumerate}
+
+\item ``Conflated'' most likely means:
+\begin{enumerate}[label=(\Alph*)]
+\item separated \item confused or merged together
+\item celebrated \item ignored
+\end{enumerate}
+
+\item What was controversial about elementary OS?
+\begin{enumerate}[label=(\Alph*)]
+\item Its use of Linux
+\item Its ``pay what you want'' download model
+\item Its color scheme
+\item Its name
+\end{enumerate}
+
+\item It can be inferred that the author:
+\begin{enumerate}[label=(\Alph*)]
+\item Dislikes elementary OS
+\item Views it as small but influential in the Linux world
+\item Thinks it will replace macOS
+\item Believes Linux should never have design focus
+\end{enumerate}
+\end{enumerate}
+
+\textbf{Answers:} 1-B, 2-B, 3-B, 4-B, 5-B
+
+% ============================================================
+\section*{Connector Exercises (10 questions)}
+% ============================================================
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*]
+
+\item \rule{2cm}{0.4pt} elementary OS resembles macOS visually, it
+runs on a completely different kernel.
+\begin{enumerate}[label=(\Alph*)]
+\item Despite \item Although \item Because \item Due to
+\end{enumerate}
+
+\item Linux is powerful; \rule{2cm}{0.4pt}, many casual users find
+it intimidating.
+\begin{enumerate}[label=(\Alph*)]
+\item therefore \item moreover \item however \item because
+\end{enumerate}
+
+\item \rule{2cm}{0.4pt} its small market share, elementary OS has
+influenced other distributions.
+\begin{enumerate}[label=(\Alph*)]
+\item Although \item Despite \item However \item While is
+\end{enumerate}
+
+\item AI is \rule{2cm}{0.4pt} powerful \rule{2cm}{0.4pt} it can
+generate human-like text in seconds.
+\begin{enumerate}[label=(\Alph*)]
+\item such...that \item so...that \item too...that \item enough...that
+\end{enumerate}
+
+\item Aldana supports AI as a tool; \rule{2cm}{0.4pt}, he warns
+against using it as a thinking replacement.
+\begin{enumerate}[label=(\Alph*)]
+\item furthermore \item nevertheless \item because \item since
+\end{enumerate}
+
+\item \textit{Find the error:}
+(A)\textbf{Despite} AI (B)\textbf{is} a powerful tool, many
+(C)\textbf{scientists} remain (D)\textbf{cautious} about its impact.
+
+\item \textit{Find the error:}
+The software is free; (A)\textbf{moreover}, (B)\textbf{it's}
+interface is (C)\textbf{cleaner} than (D)\textbf{most} alternatives.
+
+\item Not only \rule{2cm}{0.4pt} elementary OS beautiful, but it is
+also remarkably stable.
+\begin{enumerate}[label=(\Alph*)]
+\item is \item it is \item does \item has
+\end{enumerate}
+
+\item \rule{2cm}{0.4pt} AI evolves rapidly, regulations struggle to
+keep pace.
+\begin{enumerate}[label=(\Alph*)]
+\item Because \item Despite \item Although being \item Due to
+\end{enumerate}
+
+\item The Linux community values freedom; \rule{2cm}{0.4pt}, some
+users prefer the simplicity of curated systems like elementary OS.
+\begin{enumerate}[label=(\Alph*)]
+\item therefore \item in addition \item nonetheless \item because
+\end{enumerate}
+\end{enumerate}
+
+\subsection*{Answer Key}
+
+\begin{center}
+\begin{tabular}{cll}
+\toprule
+\# & Ans & Explanation \\
+\midrule
+1 & B & ``Although'' + clause (has verb ``resembles'') \\
+2 & C & Contrast between two sentences $\to$ ``however'' \\
+3 & B & ``Despite'' + noun phrase (``its small market share'') \\
+4 & B & ``So...that'' = result clause \\
+5 & B & Contrast: supports BUT warns $\to$ ``nevertheless'' \\
+6 & A & ``Despite AI IS'' $\to$ ``Although AI is'' or ``Despite AI being'' \\
+7 & B & ``It's'' $\to$ ``its'' (possessive, not contraction) \\
+8 & A & Inversion: ``Not only IS elementary OS beautiful'' \\
+9 & A & ``Because'' + clause with verb (``evolves'') \\
+10 & C & Contrast: values freedom BUT some prefer simplicity \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+% ============================================================
+\section*{Shadowing (Gemini Live --- 15 min)}
+% ============================================================
+
+\begin{quote}\small
+``The question is not whether AI is intelligent. The question is
+whether we will remain intelligent enough to use it wisely. When
+we outsource our thinking to machines, we are not merely saving
+time. We are atrophying the very cognitive muscles that make us
+capable of critical thought.''
+\end{quote}
+
+\textbf{Targets:} \textbf{outsource} (OUT-source), \textbf{atrophying}
+(AT-ro-fee-ing), \textbf{cognitive} (COG-ni-tiv), \textbf{merely}
+(MEER-lee).
+
+\end{document}

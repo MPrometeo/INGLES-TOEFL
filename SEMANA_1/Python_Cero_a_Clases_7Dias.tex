@@ -1,0 +1,533 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english,spanish]{babel}
+\usepackage{geometry}
+\geometry{margin=1.8cm}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{tcolorbox}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstset{
+  language=Python,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue}\bfseries,
+  stringstyle=\color{red},
+  commentstyle=\color{gray}\itshape,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  numbersep=5pt,
+  frame=single,
+  breaklines=true,
+  showstringspaces=false,
+  tabsize=4
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rfoot{\thepage/\pageref{LastPage}}
+\lhead{\small Python: De Cero a Clases en 7 D\'ias}
+\rhead{\small MPrometeo}
+\renewcommand{\headrulewidth}{0.4pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+
+\begin{document}
+
+\begin{center}
+{\LARGE \textbf{Python: De Cero a Dominio de Clases}}\\[4pt]
+{\large Gu\'ia ultra-compacta en 7 d\'ias}\\[2pt]
+\rule{\textwidth}{0.8pt}
+\end{center}
+
+% ============================================================
+\section*{D\'ia 1: Variables, Tipos, Operadores}
+% ============================================================
+
+\begin{lstlisting}
+# Variables: no necesitas declarar tipo
+nombre = "MPrometeo"    # str
+edad = 25               # int
+pi = 3.14159            # float
+es_estudiante = True    # bool
+
+# Operadores basicos
+suma = 10 + 3           # 13
+potencia = 2 ** 10      # 1024
+modulo = 17 % 5         # 2
+division_entera = 17 // 5  # 3
+
+# Strings
+saludo = f"Hola {nombre}, tienes {edad} anios"
+print(saludo)
+print(len(nombre))      # 9
+print(nombre.upper())   # MPROMETEO
+print(nombre[0:4])      # MPro (slicing)
+
+# Input
+x = input("Dame un numero: ")
+x = int(x)  # convertir str a int
+
+# Type checking
+print(type(pi))         # <class 'float'>
+\end{lstlisting}
+
+\textbf{Memorizar:} \texttt{int}, \texttt{float}, \texttt{str},
+\texttt{bool}, \texttt{f-strings}, \texttt{type()}, slicing
+\texttt{[inicio:fin]}.
+
+% ============================================================
+\section*{D\'ia 2: Condicionales y Bucles}
+% ============================================================
+
+\begin{lstlisting}
+# if / elif / else
+nota = 85
+if nota >= 90:
+    print("A")
+elif nota >= 80:
+    print("B")
+elif nota >= 70:
+    print("C")
+else:
+    print("F")
+
+# Operadores logicos: and, or, not
+if edad >= 18 and es_estudiante:
+    print("Adulto estudiante")
+
+# Ternario (una linea)
+resultado = "Aprobado" if nota >= 60 else "Reprobado"
+
+# for loop
+for i in range(5):       # 0,1,2,3,4
+    print(i)
+
+for letra in "Pynchon":  # itera sobre string
+    print(letra)
+
+# while loop
+contador = 0
+while contador < 5:
+    print(contador)
+    contador += 1
+
+# break y continue
+for i in range(10):
+    if i == 3:
+        continue  # salta el 3
+    if i == 7:
+        break     # para en 7
+    print(i)      # imprime 0,1,2,4,5,6
+
+# enumerate (indice + valor)
+nombres = ["Alice", "Bob", "Charlie"]
+for i, nombre in enumerate(nombres):
+    print(f"{i}: {nombre}")
+\end{lstlisting}
+
+\textbf{Memorizar:} indentaci\'on = 4 espacios (obligatorio),
+\texttt{range(inicio, fin, paso)}, \texttt{enumerate()}.
+
+% ============================================================
+\section*{D\'ia 3: Listas, Tuplas, Diccionarios, Sets}
+% ============================================================
+
+\begin{lstlisting}
+# LISTAS (mutables, ordenadas)
+frutas = ["manzana", "banana", "cereza"]
+frutas.append("durazno")     # agregar al final
+frutas.insert(1, "kiwi")     # insertar en posicion
+frutas.remove("banana")      # eliminar por valor
+ultimo = frutas.pop()        # eliminar y devolver ultimo
+frutas.sort()                # ordenar in-place
+print(frutas[0])             # primer elemento
+print(frutas[-1])            # ultimo elemento
+print(frutas[1:3])           # slicing
+
+# List comprehension (IMPORTANTISIMO)
+cuadrados = [x**2 for x in range(10)]
+pares = [x for x in range(20) if x % 2 == 0]
+
+# TUPLAS (inmutables, ordenadas)
+coordenada = (10, 20)
+x, y = coordenada  # desempaquetado
+
+# DICCIONARIOS (key:value, mutables)
+alumno = {
+    "nombre": "MPrometeo",
+    "edad": 25,
+    "carrera": "Ciencias"
+}
+print(alumno["nombre"])
+alumno["gpa"] = 9.5           # agregar key
+del alumno["edad"]             # eliminar key
+print(alumno.get("email", "N/A"))  # default si no existe
+
+# Iterar diccionario
+for key, value in alumno.items():
+    print(f"{key}: {value}")
+
+# SETS (unicos, sin orden)
+a = {1, 2, 3, 4}
+b = {3, 4, 5, 6}
+print(a | b)   # union: {1,2,3,4,5,6}
+print(a & b)   # interseccion: {3,4}
+print(a - b)   # diferencia: {1,2}
+\end{lstlisting}
+
+\textbf{Memorizar:} List comprehension es ESENCIAL. Diccionarios son
+la estructura m\'as usada en Python real.
+
+% ============================================================
+\section*{D\'ia 4: Funciones}
+% ============================================================
+
+\begin{lstlisting}
+# Funcion basica
+def saludar(nombre):
+    return f"Hola, {nombre}!"
+
+print(saludar("MPrometeo"))
+
+# Parametros por defecto
+def potencia(base, exp=2):
+    return base ** exp
+
+print(potencia(3))      # 9
+print(potencia(3, 3))   # 27
+
+# *args (argumentos variables)
+def sumar(*numeros):
+    return sum(numeros)
+
+print(sumar(1, 2, 3, 4))  # 10
+
+# **kwargs (keyword arguments variables)
+def perfil(**datos):
+    for k, v in datos.items():
+        print(f"{k}: {v}")
+
+perfil(nombre="MPrometeo", edad=25, lenguaje="Python")
+
+# Lambda (funcion anonima en una linea)
+doble = lambda x: x * 2
+print(doble(5))  # 10
+
+# map, filter
+nums = [1, 2, 3, 4, 5]
+dobles = list(map(lambda x: x*2, nums))
+pares = list(filter(lambda x: x%2==0, nums))
+
+# Funcion que devuelve funcion (closure)
+def multiplicador(n):
+    def multiplicar(x):
+        return x * n
+    return multiplicar
+
+triple = multiplicador(3)
+print(triple(10))  # 30
+\end{lstlisting}
+
+\textbf{Memorizar:} \texttt{*args}, \texttt{**kwargs}, \texttt{lambda},
+\texttt{map()}, \texttt{filter()}, closures.
+
+% ============================================================
+\section*{D\'ia 5: Archivos, Excepciones, M\'odulos}
+% ============================================================
+
+\begin{lstlisting}
+# Leer archivo
+with open("datos.txt", "r") as f:
+    contenido = f.read()
+    # o linea por linea:
+    # for linea in f:
+    #     print(linea.strip())
+
+# Escribir archivo
+with open("salida.txt", "w") as f:
+    f.write("Hola mundo\n")
+
+# Excepciones
+try:
+    resultado = 10 / 0
+except ZeroDivisionError:
+    print("No se puede dividir entre cero")
+except Exception as e:
+    print(f"Error: {e}")
+finally:
+    print("Esto siempre se ejecuta")
+
+# Levantar excepciones propias
+def dividir(a, b):
+    if b == 0:
+        raise ValueError("Divisor no puede ser cero")
+    return a / b
+
+# Modulos
+import math
+from random import randint, choice
+import os
+
+print(math.sqrt(144))     # 12.0
+print(randint(1, 100))    # numero aleatorio
+print(os.getcwd())        # directorio actual
+
+# Crear tu propio modulo: guarda funciones en un .py
+# e importalo con: import mi_modulo
+\end{lstlisting}
+
+\textbf{Memorizar:} \texttt{with open()} siempre (cierra archivo
+autom\'aticamente), \texttt{try/except/finally}.
+
+% ============================================================
+\section*{D\'ia 6: Programaci\'on Orientada a Objetos (POO)}
+% ============================================================
+
+\begin{lstlisting}
+# Clase basica
+class Estudiante:
+    # Constructor
+    def __init__(self, nombre, edad, carrera):
+        self.nombre = nombre    # atributo de instancia
+        self.edad = edad
+        self.carrera = carrera
+        self.materias = []      # lista vacia por defecto
+
+    # Metodo
+    def inscribir(self, materia):
+        self.materias.append(materia)
+        print(f"{self.nombre} inscrito en {materia}")
+
+    # Metodo con return
+    def es_adulto(self):
+        return self.edad >= 18
+
+    # Representacion string
+    def __str__(self):
+        return f"{self.nombre} ({self.carrera})"
+
+    # Representacion para debugging
+    def __repr__(self):
+        return f"Estudiante('{self.nombre}', {self.edad})"
+
+# Crear objetos (instancias)
+alumno1 = Estudiante("MPrometeo", 25, "Ciencias")
+alumno2 = Estudiante("Alice", 20, "Fisica")
+
+alumno1.inscribir("TOEFL")
+alumno1.inscribir("Python")
+print(alumno1)               # MPrometeo (Ciencias)
+print(alumno1.materias)      # ['TOEFL', 'Python']
+print(alumno1.es_adulto())   # True
+\end{lstlisting}
+
+\subsection*{Herencia}
+
+\begin{lstlisting}
+class Persona:
+    def __init__(self, nombre, edad):
+        self.nombre = nombre
+        self.edad = edad
+
+    def presentarse(self):
+        return f"Soy {self.nombre}, tengo {self.edad}"
+
+# Herencia: Estudiante ES UNA Persona
+class Estudiante(Persona):
+    def __init__(self, nombre, edad, carrera):
+        super().__init__(nombre, edad)  # llama al padre
+        self.carrera = carrera
+
+    # Override (sobreescribir metodo del padre)
+    def presentarse(self):
+        base = super().presentarse()
+        return f"{base}, estudio {self.carrera}"
+
+class Profesor(Persona):
+    def __init__(self, nombre, edad, departamento):
+        super().__init__(nombre, edad)
+        self.departamento = departamento
+
+est = Estudiante("MPrometeo", 25, "Ciencias")
+prof = Profesor("Aldana", 55, "Complejidad")
+print(est.presentarse())
+# Soy MPrometeo, tengo 25, estudio Ciencias
+print(prof.presentarse())
+# Soy Aldana, tengo 55
+\end{lstlisting}
+
+\subsection*{Encapsulamiento}
+
+\begin{lstlisting}
+class CuentaBancaria:
+    def __init__(self, titular, saldo=0):
+        self.titular = titular
+        self.__saldo = saldo  # __ = privado (name mangling)
+
+    def depositar(self, cantidad):
+        if cantidad > 0:
+            self.__saldo += cantidad
+
+    def retirar(self, cantidad):
+        if 0 < cantidad <= self.__saldo:
+            self.__saldo -= cantidad
+        else:
+            print("Fondos insuficientes")
+
+    @property
+    def saldo(self):  # getter como propiedad
+        return self.__saldo
+
+cuenta = CuentaBancaria("MPrometeo", 1000)
+cuenta.depositar(500)
+print(cuenta.saldo)  # 1500 (usa @property)
+# cuenta.__saldo     # ERROR: atributo privado
+\end{lstlisting}
+
+% ============================================================
+\section*{D\'ia 7: Clases Avanzadas + Proyecto Final}
+% ============================================================
+
+\subsection*{M\'etodos de clase y est\'aticos}
+
+\begin{lstlisting}
+class Matematicas:
+    pi = 3.14159  # atributo de clase (compartido)
+
+    @staticmethod  # no necesita self ni cls
+    def sumar(a, b):
+        return a + b
+
+    @classmethod   # recibe la clase, no la instancia
+    def area_circulo(cls, radio):
+        return cls.pi * radio ** 2
+
+print(Matematicas.sumar(3, 5))        # 8
+print(Matematicas.area_circulo(10))   # 314.159
+\end{lstlisting}
+
+\subsection*{Dunder Methods (m\'etodos m\'agicos)}
+
+\begin{lstlisting}
+class Vector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __add__(self, otro):       # v1 + v2
+        return Vector(self.x + otro.x, self.y + otro.y)
+
+    def __mul__(self, escalar):    # v1 * 3
+        return Vector(self.x * escalar, self.y * escalar)
+
+    def __len__(self):             # len(v1)
+        return int((self.x**2 + self.y**2)**0.5)
+
+    def __eq__(self, otro):        # v1 == v2
+        return self.x == otro.x and self.y == otro.y
+
+    def __str__(self):
+        return f"({self.x}, {self.y})"
+
+v1 = Vector(3, 4)
+v2 = Vector(1, 2)
+v3 = v1 + v2
+print(v3)       # (4, 6)
+print(len(v1))  # 5
+print(v1 * 2)   # (6, 8)
+\end{lstlisting}
+
+\subsection*{Proyecto Final: Sistema de Calificaciones TOEFL}
+
+\begin{lstlisting}
+class TOEFLScore:
+    # Tabla de conversion (simplificada)
+    CEFR_MAP = {
+        "A2": (337, 459),
+        "B1": (460, 542),
+        "B2": (543, 626),
+        "C1": (627, 677)
+    }
+
+    def __init__(self, nombre, listening, structure, reading):
+        self.nombre = nombre
+        self.listening = listening  # scaled 31-68
+        self.structure = structure
+        self.reading = reading
+
+    @property
+    def total(self):
+        return round((self.listening + self.structure
+                       + self.reading) / 3 * 10)
+
+    @property
+    def cefr(self):
+        for nivel, (bajo, alto) in self.CEFR_MAP.items():
+            if bajo <= self.total <= alto:
+                return nivel
+        if self.total < 337:
+            return "A1"
+        return "C1+"
+
+    def __str__(self):
+        return (f"{self.nombre}: L={self.listening} "
+                f"S={self.structure} R={self.reading} "
+                f"| Total={self.total} | CEFR={self.cefr}")
+
+    def __gt__(self, otro):  # comparar scores
+        return self.total > otro.total
+
+    @classmethod
+    def from_raw(cls, nombre, l_raw, s_raw, r_raw):
+        """Crea desde raw scores (simplificado)."""
+        # Conversion super simplificada
+        l = 31 + int(l_raw / 50 * 37)
+        s = 31 + int(s_raw / 40 * 37)
+        r = 31 + int(r_raw / 50 * 36)
+        return cls(nombre, l, s, r)
+
+# Uso
+yo = TOEFLScore("MPrometeo", 49, 52, 54)
+print(yo)
+# MPrometeo: L=49 S=52 R=54 | Total=517 | CEFR=B1
+
+mock1 = TOEFLScore.from_raw("Mock1", 35, 28, 40)
+mock2 = TOEFLScore.from_raw("Mock2", 40, 32, 43)
+print(mock1)
+print(mock2)
+print(f"Mock2 mejor que Mock1? {mock2 > mock1}")
+
+# Lista de scores
+scores = [yo, mock1, mock2]
+scores.sort(key=lambda s: s.total, reverse=True)
+for s in scores:
+    print(s)
+\end{lstlisting}
+
+% ============================================================
+\section*{Resumen de Conceptos por D\'ia}
+% ============================================================
+
+\begin{center}
+\small
+\begin{tabular}{cl}
+\toprule
+\textbf{D\'ia} & \textbf{Conceptos clave} \\
+\midrule
+1 & Variables, tipos, f-strings, slicing, type() \\
+2 & if/elif/else, for, while, break, continue, enumerate \\
+3 & Listas, tuplas, diccionarios, sets, list comprehension \\
+4 & Funciones, *args, **kwargs, lambda, map, filter, closures \\
+5 & Archivos (with open), try/except, import, modulos \\
+6 & class, \_\_init\_\_, self, herencia, super(), @property \\
+7 & @staticmethod, @classmethod, dunder methods, proyecto \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{document}
